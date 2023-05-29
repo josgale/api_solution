@@ -1,0 +1,37 @@
+version: '3'
+
+services:
+    flask-app:
+        container_name: flask-app
+        build: app
+        restart: always
+        ports:
+            - '8080:8080'
+        volumes:
+            - ./app:/app
+        links:
+            - mysql-db
+        networks:
+            - backend
+        
+    mysql-db:
+        container_name: mysql-db
+        image: mariadb:latest
+        restart: always
+        environment:
+            MYSQL_ROOT_PASSWORD: root
+           # MYSQL_DATABASE: USER_API
+        ports:
+            - '3306:3306'
+        volumes:
+            - database:/var/lib/mysql
+            - ./database/init.sql:/docker-entrypoint-initdb.d/init.sql
+        networks:
+            - backend
+
+networks:
+    backend:
+
+volumes:
+    app:
+    database:

@@ -1,0 +1,21 @@
+# Python
+*.pyc
+__pycache__/
+venv/
+*.egg-info/
+dist/
+build/
+*.log
+
+# Flask
+instance/
+
+# Environment variables
+.env
+.env.*
+
+# IDE
+.vscode/
+
+# System
+.DS_Store
