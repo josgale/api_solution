@@ -10,7 +10,6 @@ BASE_URL = 'http://localhost:8080'  # Update the URL if needed
 class UserApiTestCase(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
-        # Load test data from CSV
         cls.test_data = cls.load_test_data()
 
     @staticmethod
@@ -47,7 +46,6 @@ class UserApiTestCase(unittest.TestCase):
                 user_data, {'id': user_id, 'user_name': row['user_name']})
 
     def tearDown(self):
-        # Clean up any resources if needed
         pass
 
 
