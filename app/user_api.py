@@ -4,7 +4,7 @@ from database_connector import get_all_users, get_user_by_id, post_user
 app = Flask(__name__)
 
 
-@app.route('/users', methods=['GET'])
+@app.route('/v1/users', methods=['GET'])
 def get_users():
     try:
         users = get_all_users()
@@ -19,7 +19,7 @@ def get_users():
         return jsonify(response), 500
 
 
-@app.route('/users', methods=['POST'])
+@app.route('/v1/users', methods=['POST'])
 def create_user():
     try:
         user_data = request.get_json()
@@ -37,7 +37,7 @@ def create_user():
         return jsonify(response), 500
 
 
-@app.route('/users/<int:user_id>', methods=['GET'])
+@app.route('/v1/users/<int:user_id>', methods=['GET'])
 def get_user(user_id):
     try:
         user = get_user_by_id(user_id)
